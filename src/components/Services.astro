@@ -1,0 +1,183 @@
+---
+const services = [
+  {
+    icon: "✂",
+    name: "Haarschnitt",
+    desc: "Klassisch oder modern – wir schneiden nach deinen Wünschen. Inklusive Waschen und Styling.",
+    price: "ab 25 €",
+    duration: "45 Min"
+  },
+  {
+    icon: "▲",
+    name: "Bartpflege",
+    desc: "Konturieren, trimmen, rasieren. Dein Bart verdient professionelle Pflege.",
+    price: "ab 18 €",
+    duration: "30 Min"
+  },
+  {
+    icon: "◈",
+    name: "Schnitt & Bart",
+    desc: "Das komplette Paket. Haarschnitt und Bartpflege in einer Session.",
+    price: "ab 38 €",
+    duration: "75 Min"
+  },
+  {
+    icon: "◇",
+    name: "Hot Towel Rasur",
+    desc: "Das klassische Barbershop-Erlebnis. Heißes Tuch, Schaum, gerades Rasiermesser.",
+    price: "ab 28 €",
+    duration: "45 Min"
+  },
+  {
+    icon: "○",
+    name: "Kinder (bis 12)",
+    desc: "Geduldige Behandlung für die Kleinen. Entspannt und schnell.",
+    price: "ab 15 €",
+    duration: "30 Min"
+  },
+  {
+    icon: "⬡",
+    name: "Color & Toning",
+    desc: "Grau überfärben oder einen subtilen Ton setzen – natürlich und langanhaltend.",
+    price: "ab 35 €",
+    duration: "60 Min"
+  },
+];
+---
+
+<section id="leistungen" class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Leistungen</span>
+      <h2 class="section-title">Was wir für dich tun</h2>
+      <p class="section-subtitle">
+        Jeder Service wird mit Zeit, Sorgfalt und dem richtigen Handwerkszeug ausgeführt.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <div class="service-card" style={`--delay: ${i * 0.05}s`}>
+          <div class="service-icon">{s.icon}</div>
+          <h3 class="service-name">{s.name}</h3>
+          <p class="service-desc">{s.desc}</p>
+          <div class="service-meta">
+            <span class="service-price">{s.price}</span>
+            <span class="service-duration">{s.duration}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="services-note">
+      Alle Preise sind Richtpreise. Das genaue Angebot besprechen wir beim Termin.
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    padding: var(--section-padding);
+    background: var(--color-surface);
+  }
+
+  .section-header {
+    margin-bottom: 64px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .service-card {
+    background: var(--color-surface);
+    padding: 40px 32px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover {
+    background: var(--color-surface-2);
+  }
+
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text);
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .service-price {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-gold);
+  }
+
+  .service-duration {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .services-note {
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 580px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 28px 24px; }
+  }
+</style>

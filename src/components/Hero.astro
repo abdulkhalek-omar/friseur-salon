@@ -1,0 +1,229 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Geöffnet heute · Mo–Sa 9–19 Uhr
+    </div>
+
+    <h1 class="hero-title">
+      Mehr als ein<br />
+      <em>Haarschnitt.</em>
+    </h1>
+
+    <p class="hero-text">
+      Handwerk trifft Stil. Bei BarberCraft in Wien bekommst du präzise Schnitte,
+      meisterhafte Bartpflege und eine Atmosphäre, in der du dich sofort wohlfühlst.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary">Termin vereinbaren</a>
+      <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">8+</span>
+        <span class="stat-label">Jahre Erfahrung</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">2500+</span>
+        <span class="stat-label">Zufriedene Kunden</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">4.9★</span>
+        <span class="stat-label">Google Bewertung</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scrollen</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 120px;
+    padding-bottom: 80px;
+    max-width: 680px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    margin-bottom: 40px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4caf50;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--color-text);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .hero-text {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 44px;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gold-light);
+  }
+
+  .btn-ghost {
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-border);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    right: 48px;
+    bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+  }
+
+  @media (max-width: 600px) {
+    .hero-scroll { display: none; }
+    .hero-stats { gap: 20px; }
+  }
+</style>

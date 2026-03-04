@@ -1,0 +1,192 @@
+---
+const links = [
+  { href: "#leistungen", label: "Leistungen" },
+  { href: "#ueber-uns", label: "Über uns" },
+  { href: "#oeffnungszeiten", label: "Öffnungszeiten" },
+  { href: "#kontakt", label: "Kontakt" },
+];
+---
+
+<header class="nav-wrapper">
+  <nav class="nav container">
+    <a href="#" class="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">BarberCraft</span>
+    </a>
+
+    <ul class="nav-links">
+      {links.map(l => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+
+    <a href="#kontakt" class="nav-cta">Termin buchen</a>
+
+    <button class="burger" aria-label="Menü öffnen" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    {links.map(l => (
+      <li><a href={l.href} class="mobile-link">{l.label}</a></li>
+    ))}
+    <li><a href="#kontakt" class="mobile-cta">Termin buchen</a></li>
+  </ul>
+</div>
+
+<style>
+  .nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: background 0.3s;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    color: var(--color-gold);
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+    margin-left: auto;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+
+  .nav-cta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    padding: 10px 22px;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+
+  .burger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-text);
+    transition: transform 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg);
+    z-index: 99;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .mobile-link {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .mobile-cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    padding: 14px 32px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .burger { display: flex; }
+  }
+</style>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-cta');
+
+  burger?.addEventListener('click', () => {
+    menu?.classList.toggle('open');
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => menu?.classList.remove('open'));
+  });
+</script>

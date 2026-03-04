@@ -1,0 +1,197 @@
+---
+const values = [
+  { title: "Handwerk", text: "Jeder Schnitt ist ein Kunstwerk. Wir nehmen uns Zeit für Präzision." },
+  { title: "Atmosphäre", text: "Kein Stress, kein Gedränge. Nur du, dein Barber und gute Musik." },
+  { title: "Qualität", text: "Nur professionelle Produkte – für Haar und Haut gleichermaßen." },
+];
+---
+
+<section id="ueber-uns" class="about-section">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="visual-frame">
+        <div class="visual-inner">
+          <div class="scissors-icon">✂</div>
+          <p class="visual-quote">"Ein guter Haarschnitt verändert nicht nur dein Aussehen – er verändert, wie du dich fühlst."</p>
+          <span class="visual-author">— Mehmet, Inhaber</span>
+        </div>
+        <div class="frame-corner top-left"></div>
+        <div class="frame-corner top-right"></div>
+        <div class="frame-corner bottom-left"></div>
+        <div class="frame-corner bottom-right"></div>
+      </div>
+
+      <div class="about-badge">
+        <span class="badge-year">Seit 2016</span>
+        <span class="badge-text">Wien Favoriten</span>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <span class="section-label">Über uns</span>
+      <h2 class="section-title">Ein Ort für Männer, die Stil schätzen</h2>
+      <p class="about-text">
+        BarberCraft wurde 2016 von Mehmet Yilmaz gegründet – mit einer klaren Vision:
+        ein Barbershop, der klassisches Handwerk mit modernem Design verbindet.
+      </p>
+      <p class="about-text">
+        Wir sind kein Massengeschäft. Unser Team nimmt sich Zeit für jeden Kunden,
+        hört zu und arbeitet sorgfältig. Das Ergebnis? Ein Schnitt, der sitzt.
+        Und ein Erlebnis, zu dem du gerne wiederkommst.
+      </p>
+
+      <div class="values-list">
+        {values.map(v => (
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <div>
+              <strong>{v.title}</strong>
+              <p>{v.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: var(--section-padding);
+    background: var(--color-bg);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .visual-frame {
+    position: relative;
+    background: var(--color-surface);
+    padding: 52px 40px;
+    text-align: center;
+  }
+
+  .frame-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--color-gold);
+    border-style: solid;
+  }
+
+  .top-left { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .top-right { top: -1px; right: -1px; border-width: 1px 1px 0 0; }
+  .bottom-left { bottom: -1px; left: -1px; border-width: 0 0 1px 1px; }
+  .bottom-right { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+  .scissors-icon {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    margin-bottom: 28px;
+    display: block;
+    opacity: 0.7;
+  }
+
+  .visual-quote {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: 20px;
+  }
+
+  .visual-author {
+    font-size: 0.8rem;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    background: var(--color-gold);
+    color: var(--color-bg);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .badge-year {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .badge-text {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  .about-text {
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  .values-list {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .value-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .value-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .value-item strong {
+    display: block;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+
+  .value-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .about-badge {
+      right: 0;
+      bottom: -20px;
+    }
+  }
+</style>

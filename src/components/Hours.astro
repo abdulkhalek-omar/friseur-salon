@@ -1,0 +1,212 @@
+---
+const schedule = [
+  { day: "Montag", hours: "09:00 – 19:00" },
+  { day: "Dienstag", hours: "09:00 – 19:00" },
+  { day: "Mittwoch", hours: "09:00 – 19:00" },
+  { day: "Donnerstag", hours: "09:00 – 20:00" },
+  { day: "Freitag", hours: "09:00 – 20:00" },
+  { day: "Samstag", hours: "08:00 – 18:00" },
+  { day: "Sonntag", hours: "Geschlossen" },
+];
+
+// Current day (0=Sunday, 1=Monday...)
+---
+
+<section id="oeffnungszeiten" class="hours-section">
+  <div class="container hours-grid">
+    <div class="hours-content">
+      <span class="section-label">Öffnungszeiten</span>
+      <h2 class="section-title">Wann du uns findest</h2>
+      <p class="section-subtitle">
+        Kein Termin notwendig – aber empfohlen, damit du nicht wartest.
+      </p>
+
+      <ul class="schedule">
+        {schedule.map(s => (
+          <li class={`schedule-row ${s.hours === 'Geschlossen' ? 'closed' : ''}`}>
+            <span class="day">{s.day}</span>
+            <span class="time">{s.hours}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="hours-map">
+      <div class="map-placeholder">
+        <div class="map-content">
+          <div class="map-icon">◉</div>
+          <strong class="map-name">BarberCraft</strong>
+          <p class="map-address">Favoritenstraße 78<br />1100 Wien, Österreich</p>
+          <a
+            href="https://maps.google.com/?q=Favoritenstraße+78+Wien"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-link"
+          >
+            In Maps öffnen →
+          </a>
+        </div>
+      </div>
+
+      <div class="transit">
+        <div class="transit-item">
+          <span class="transit-icon">U</span>
+          <span>U1 Reumannplatz – 5 Min. Fußweg</span>
+        </div>
+        <div class="transit-item">
+          <span class="transit-icon">P</span>
+          <span>Parkplätze in der Nähe vorhanden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hours-section {
+    padding: var(--section-padding);
+    background: var(--color-surface);
+  }
+
+  .hours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .schedule {
+    list-style: none;
+    margin-top: 40px;
+    border: 1px solid var(--color-border);
+  }
+
+  .schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.95rem;
+    transition: background 0.15s;
+  }
+
+  .schedule-row:last-child {
+    border-bottom: none;
+  }
+
+  .schedule-row:hover {
+    background: var(--color-surface-2);
+  }
+
+  .schedule-row.closed .time {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .day {
+    color: var(--color-text);
+    font-weight: 400;
+  }
+
+  .time {
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  .map-placeholder {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .map-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .map-icon {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .map-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  .map-address {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .map-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-gold);
+    border-bottom: 1px solid rgba(201,168,76,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .map-link:hover {
+    border-color: var(--color-gold);
+  }
+
+  .transit {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .transit-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .transit-icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hours-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+</style>

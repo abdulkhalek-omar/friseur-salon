@@ -47,7 +47,7 @@ const services = [
 
 <section id="leistungen" class="services-section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header" data-animate="fade-up">
       <span class="section-label">Leistungen</span>
       <h2 class="section-title">Was wir für dich tun</h2>
       <p class="section-subtitle">
@@ -57,7 +57,7 @@ const services = [
 
     <div class="services-grid">
       {services.map((s, i) => (
-        <div class="service-card" style={`--delay: ${i * 0.05}s`}>
+        <div class="service-card" data-animate="scale-in" style={`animation-delay: ${i * 0.08}s; --delay: ${i * 0.08}s`}>
           <div class="service-icon">{s.icon}</div>
           <h3 class="service-name">{s.name}</h3>
           <p class="service-desc">{s.desc}</p>

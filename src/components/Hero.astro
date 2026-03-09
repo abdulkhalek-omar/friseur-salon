@@ -7,27 +7,27 @@
   </div>
 
   <div class="container hero-content">
-    <div class="hero-badge">
+    <div class="hero-badge hero-anim" style="--order: 0">
       <span class="dot"></span>
       Geöffnet heute · Mo–Sa 9–19 Uhr
     </div>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title hero-anim" style="--order: 1">
       Mehr als ein<br />
       <em>Haarschnitt.</em>
     </h1>
 
-    <p class="hero-text">
+    <p class="hero-text hero-anim" style="--order: 2">
       Handwerk trifft Stil. Bei BarberCraft in Wien bekommst du präzise Schnitte,
       meisterhafte Bartpflege und eine Atmosphäre, in der du dich sofort wohlfühlst.
     </p>
 
-    <div class="hero-actions">
+    <div class="hero-actions hero-anim" style="--order: 3">
       <a href="#kontakt" class="btn btn-primary">Termin vereinbaren</a>
       <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
     </div>
 
-    <div class="hero-stats">
+    <div class="hero-stats hero-anim" style="--order: 4">
       <div class="stat">
         <span class="stat-number">8+</span>
         <span class="stat-label">Jahre Erfahrung</span>
@@ -201,6 +201,19 @@
     background: var(--color-border);
   }
 
+  /* Hero staggered entrance */
+  .hero-anim {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.15s + var(--order) * 0.12s);
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   .hero-scroll {
     position: absolute;
     right: 48px;
@@ -214,12 +227,28 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     writing-mode: vertical-rl;
+    opacity: 0;
+    animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards;
   }
 
   .scroll-line {
     width: 1px;
     height: 60px;
     background: linear-gradient(to bottom, var(--color-gold), transparent);
+    animation: bounce 2s ease-in-out 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anim, .hero-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
   }
 
   @media (max-width: 600px) {
